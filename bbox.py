@@ -18,6 +18,21 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+ 
+Purpose
+-------
+
+Facilitates control of map extent by making it easier to input a bounding box and read the current bounding box.
+ 
+Usage
+-----
+ 
+You can enter the border extents into seperate fields, or enter all four coordinates as a single comma-separated text string. Both input methods update together. The diagram may be handy for interactively adjusting the bounding box, while the text field may be handy for copying and pasting from/to other applications.
+
+You can update the values from the map window's current extent, and you can zoom the map to the current extent.
+
+Note that because the proportions of the QGIS window may be different than the bounding box, it will not always match exactly.
+ 
 """
 # Import the PyQt and QGIS libraries
 from PyQt4.QtCore import *

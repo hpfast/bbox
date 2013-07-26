@@ -31,7 +31,7 @@ You can enter the border extents into seperate fields, or enter all four coordin
 
 You can update the values from the map window's current extent, and you can zoom the map to the current extent.
 
-Note that because the proportions of the QGIS window may be different than the bounding box, it will not always match exactly.
+Note that because the proportions of the QGIS window may be different than the bounding box, it will not always match exactly. You can update the values from the window extent and then check the box 'keep proportions' to make sure your bounding box experiments match the proportions of your current 
  
 """
 # Import the PyQt and QGIS libraries

@@ -82,24 +82,15 @@ class bBox:
         # Remove the plugin menu item and icon
         self.iface.removePluginMenu(u"&bbox", self.action)
         self.iface.removeToolBarIcon(self.action)
-    def popup_string(self, inputString):
-        #pop up an alert with the entered string
-        QMessageBox.information(self.iface.mainWindow(),"About",inputString)
-        
+
     # run method that performs all the real work
     def run(self):
-       # infoString = u"This is a test"
-       # QMessageBox.information(self.iface.mainWindow(),"About",infoString)
-        inputString = self.dlg.ui.inputString.text()
+        # show the dialog
         self.dlg.show()
-        result = self.dlg.exec_() # exec_() comes form bboxDialog which gets it from PyQt4
+        # Run the dialog event loop
+        result = self.dlg.exec_()
         # See if OK was pressed
         if result == 1:
-            try:
-                self.popup_string(inputString)
-            except Exception, e:
-                QMessageBox.information(self.iface.mainWindow(), QCoreApplication.translate('QuickWKT', "QuickWKT plugin error"), QCoreApplication.translate('QuickWKT', "There was an error with the service:<br /><strong>%1</strong>").arg(unicode(e)))
-                return
-            # Refresh the map
-            self.canvas.refresh()
-            return
+            # do something useful (delete the line containing pass and
+            # substitute with your code)
+            pass

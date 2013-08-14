@@ -32,15 +32,6 @@ class bBoxDialog(QtGui.QDialog):
         # Set up the user interface from Designer.
         self.ui = Ui_bBox()
         self.ui.setupUi(self)
-#	self.connect(self.ui.buttonBox, QtCore.SIGNAL("accepted()"), self.accept)
-#	self.connect(self.ui.buttonBox, QtCore.SIGNAL("rejected()"), self.close)
-	self.ui.buttonBox.accepted.connect(self.accept)
-	self.ui.buttonBox.rejected.connect(self.closeDialog)
-    def accept(self):
-	print 'kaas'
-
-    def closeDialog(self):
-	self.done(0)
 
 #def on_buttonBox_accepted(self):
 

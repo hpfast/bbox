@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_bbox.ui'
 #
-# Created: Thu Aug  1 15:09:25 2013
+# Created: Wed Aug 14 15:54:44 2013
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -25,10 +25,13 @@ class Ui_bBox(object):
         self.label.setGeometry(QtCore.QRect(10, 10, 141, 21))
         self.label.setObjectName(_fromUtf8("label"))
         self.buttonBox = QtGui.QDialogButtonBox(bBox)
-        self.buttonBox.setGeometry(QtCore.QRect(120, 70, 291, 31))
+        self.buttonBox.setGeometry(QtCore.QRect(320, 70, 91, 31))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Close|QtGui.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Close)
         self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
+        self.updateMap = QtGui.QPushButton(bBox)
+        self.updateMap.setGeometry(QtCore.QRect(10, 70, 95, 31))
+        self.updateMap.setObjectName(_fromUtf8("updateMap"))
 
         self.retranslateUi(bBox)
         QtCore.QMetaObject.connectSlotsByName(bBox)
@@ -37,4 +40,5 @@ class Ui_bBox(object):
         bBox.setWindowTitle(QtGui.QApplication.translate("bBox", "bBox", None, QtGui.QApplication.UnicodeUTF8))
         self.inputString.setText(QtGui.QApplication.translate("bBox", "MinX,MinY,MaxX,MaxY", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("bBox", "Enter bbox as string", None, QtGui.QApplication.UnicodeUTF8))
+        self.updateMap.setText(QtGui.QApplication.translate("bBox", "Update Map", None, QtGui.QApplication.UnicodeUTF8))
 

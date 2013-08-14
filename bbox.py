@@ -66,6 +66,33 @@ class bBox:
         # Create the dialog (after translation) and keep reference
         self.dlg = bBoxDialog()
 
+	#create connections to do things based on button input of dialog
+	self.dlg.ui.buttonBox.rejected.connect(self.closeDialog) #connect self.closeDialog to signal buttonBox.rejected (when Close button is pressed in buttonBox)
+	self.dlg.ui.updateMap.clicked.connect(self.updateMap) #connect self.updateMap to signal pushButton.clicked (when Update Map button is pressed in buttonBox)
+#	self.dlg.ui.updateDialog.clicked.connect(self.updateDialog) #we don't need this button because now the dialog updates at each map extent change: connect self.updateDialog to signal pushButton.clicked (when Update from Map button is pressed in buttonBox)
+
+	#connect the Map Canvas extentsChanged signal to our getExtent method
+	self.iface.mapCanvas().extentsChanged.connect(self.updateDialog)
+
+    # method which updates the map extent from the values entered into the dialog box input string
+    def updateMap(self):
+	print 'kaas'
+        inputString = self.dlg.ui.inputString.text()
+	print inputString	
+
+    #method which sets the contents of the input string in the dialog box
+    def updateDialog(self):
+	self.dlg.ui.inputString.setText(self.getExtent()) #set the text of inputString to the result of getExtent()
+	
+    def getExtent(self):
+#	print dir(self.iface.mapCanvas().extent())
+#	print self
+	extent = self.iface.mapCanvas().extent()
+	return extent.toString()
+
+    def closeDialog(self):
+	self.dlg.done(0)
+
     def initGui(self):
         # Create action that will start plugin configuration
         self.action = QAction(
@@ -90,16 +117,5 @@ class bBox:
     def run(self):
        # infoString = u"This is a test"
        # QMessageBox.information(self.iface.mainWindow(),"About",infoString)
-        inputString = self.dlg.ui.inputString.text()
+	self.updateDialog() #fill the dialog input with current extent of map
         self.dlg.show()
-        result = self.dlg.exec_() # exec_() comes form bboxDialog which gets it from PyQt4
-        # See if OK was pressed
-        if result == 1:
-            try:
-                self.popup_string(inputString)
-            except Exception, e:
-                QMessageBox.information(self.iface.mainWindow(), QCoreApplication.translate('QuickWKT', "QuickWKT plugin error"), QCoreApplication.translate('QuickWKT', "There was an error with the service:<br /><strong>%1</strong>").arg(unicode(e)))
-                return
-            # Refresh the map
-            self.canvas.refresh()
-            return

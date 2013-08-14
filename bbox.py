@@ -78,17 +78,23 @@ class bBox:
     def updateMap(self):
 	print 'kaas'
         inputString = self.dlg.ui.inputString.text()
-	print inputString	
-
+	print inputString
+	rect = QgsRectangle()
+	rect.setXMinimum(0)
+	rect.setXMaximum(40000)
+	rect.setYMinimum(300000)
+	rect.setYMaximum(600000)
+	self.iface.mapCanvas().setExtent(rect)
+	self.iface.mapCanvas().refresh()
     #method which sets the contents of the input string in the dialog box
     def updateDialog(self):
-	self.dlg.ui.inputString.setText(self.getExtent()) #set the text of inputString to the result of getExtent()
+	self.dlg.ui.inputString.setText(self.getExtent().toString()) #set the text of inputString to the result of getExtent()
 	
     def getExtent(self):
 #	print dir(self.iface.mapCanvas().extent())
 #	print self
 	extent = self.iface.mapCanvas().extent()
-	return extent.toString()
+	return extent
 
     def closeDialog(self):
 	self.dlg.done(0)

@@ -75,11 +75,9 @@ class bBox:
 	self.iface.mapCanvas().extentsChanged.connect(self.updateDialog)
 
 
-    #method which parses the input string into four variables
-    def parseString(self):
-        print 'cheese'
 
     # method which updates the map extent from the values entered into the dialog box input string
+    # uses regular expressions (re) and float() to convert unicode strings to floats.
     def updateMap(self):
 	print 'kaas'
         inputString = self.dlg.ui.inputString.text()

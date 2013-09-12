@@ -43,7 +43,7 @@ import resources_rc
 # Import the code for the dialog
 from bboxdialog import bBoxDialog
 import os.path
-
+import re
 
 class bBox:
 
@@ -74,16 +74,22 @@ class bBox:
 	#connect the Map Canvas extentsChanged signal to our getExtent method
 	self.iface.mapCanvas().extentsChanged.connect(self.updateDialog)
 
+
+    #method which parses the input string into four variables
+    def parseString(self):
+        print 'cheese'
+
     # method which updates the map extent from the values entered into the dialog box input string
     def updateMap(self):
 	print 'kaas'
         inputString = self.dlg.ui.inputString.text()
-	print inputString
+	splitString = re.split(r",|:",inputString)
+	print splitString
 	rect = QgsRectangle()
-	rect.setXMinimum(0)
-	rect.setXMaximum(40000)
-	rect.setYMinimum(300000)
-	rect.setYMaximum(600000)
+	rect.setXMinimum(float(splitString[0]))
+	rect.setXMaximum(float(splitString[1]))
+	rect.setYMinimum(float(splitString[2]))
+	rect.setYMaximum(float(splitString[3]))
 	self.iface.mapCanvas().setExtent(rect)
 	self.iface.mapCanvas().refresh()
     #method which sets the contents of the input string in the dialog box
